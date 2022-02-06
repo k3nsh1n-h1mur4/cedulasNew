@@ -7,8 +7,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cedulas.sqlite'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2:////postgres:k0rn82...@localhost:49262/cedulas'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2:///u?:p?@localhost:49262/?'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.urandom(16)
 
@@ -16,7 +16,7 @@ app.config['SECRET_KEY'] = os.urandom(16)
 db = SQLAlchemy(app)
 
 class registroCedulas(db.Model):
-    __tablename__ = 'registro_cedulas'
+    __tablename__ = '?'
 
     id = db.Column(db.Integer, primary_key=True)
     matricula = db.Column(db.String(20), unique=True, nullable=False)
