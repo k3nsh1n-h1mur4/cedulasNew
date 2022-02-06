@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-2" id="logo">
+			<img src="{{ url_for('static', filename='images/sntss-logo.png') }}" alt="logo" width="80" height="100px" >
+		</div>
+		<div class="col" id="title">
+			<h5>SINDICATO NACIONAL DE TRABAJADORES DEL SEGURO SOCIAL SECC III JALISCO</h5>
+			<h6>REGISTRO CÉDULAS DE AFILIACIÓN</h6>
+		</div>
+			
+	</div>
+</div>
+
+
+<div class="container mt-3">
+	<div class="row">
+		<div class="col">
+			<form action="" method="POST" class="form">
+
+				<label for="matricula">Matrícula</label>
+				<input type="text" name="matricula" class="form-control">
+
+				<label for="nombre">Nombre</label>
+				<input type="text" name="nombre" class="form-control">
+
+				<label for="sexo">Sexo</label>
+				<input type="text" name="sexo" class="form-control">
+
+				<label for="fnac">Fecha de Nacimiento</label>
+				<input type="date" name="fnac" class="form-control">
+
+				<label for="correo">Correo</label>
+				<input type="text" name="correo" class="form-control">
+
+				<label for="telefono">Teléfono</label>
+				<input type="text" name="telefono" class="form-control">
+
+				<label for="nss">Número de Seguro Social</label>
+				<input type="text" name="nss" class="form-control">
+
+				<label for="rfc">RFC</label>
+				<input type="text" name="rfc" class="form-control">
+
+				<label for="curp">CURP</label>
+				<input type="text" name="curp" class="form-control">
+
+				<label for="categoria">Categoría</label>
+				<input type="text" name="categoria" class="form-control">
+
+				<label for="turno">Turno Laboral</label>
+				<input type="text" name="turno" class="form-control">
+
+				<label for="tcontr">Tipo de Contratación</label>
+				<input type="text" name="tcontr" class="form-control">
+
+				<label for="fingr">Fecha de Ingreso al IMSS</label>
+				<input type="date" name="fingr" class="form-control">
+
+				<label for="uadscripcion">Unidad de Adscripción</label>
+				<input type="text" name="uadscripcion" class="form-control">
+
+
+				<input type="submit" value="Registrar" class="btn btn-primary" id="button">		
+			</form>
+		</div>
+	</div>
+	
+</div>
+
+
+{% endblock %}
