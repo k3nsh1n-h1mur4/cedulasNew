@@ -9,7 +9,7 @@ import requests
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\Users\\jazyi\\flask-projects\\cedulasNew\\cedulas.sqlite'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2:///u?:p?@localhost:49262/?'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.urandom(16)
@@ -59,10 +59,10 @@ class registroCedulas(db.Model):
 def my_decorator(function):
     def wrapper(*args, **kwargs):
         print("hola warpper")
-        con = sqlite3.connect("C:\\Users\\jazyi\\flask-projects\\cedulasNew\\cedulasAfiliacion.sqlite")
+        con = sqlite3.connect("")
         con.row_factory = sqlite3.Row
         cursor = con.cursor()
-        rows = cursor.execute('SELECT * FROM cedulasTable WHERE matricula={}'.format(11859245))
+        rows = cursor.execute('SELECT * FROM ... WHERE matricula={}'.format(...))
         result = rows.fetchone()
         print(result[1])
         
