@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-2" id="logo">
+			<img src="{{ url_for('static', filename='images/sntss-logo.png') }}" alt="logo" width="80" height="100px" >
+		</div>
+		<div class="col" id="title">
+			<h5>SINDICATO NACIONAL DE TRABAJADORES DEL SEGURO SOCIAL SECC III JALISCO</h5>
+			<h6>REGISTRO CÉDULAS DE AFILIACIÓN</h6>
+		</div>
+			
+	</div>
+</div>
+
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col">
+				{% with messages = get_flashed_messages() %}
+		          {% if messages %}
+		          <ul class=flashes>
+		            {% for message in messages %}
+		              <li><h1>{{ messages }}</h1></li>
+		            {% endfor %}
+		          </ul>  
+		          {% endif %}
+		        {% endwith %}
+
+		        <a href="{{ url_for('.validate_matricula') }}">Regresar</a>
+			</div>
+		</div>
+	</div>
+
+	
+
+
+{% endblock %}

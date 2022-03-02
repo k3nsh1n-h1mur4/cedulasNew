@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+	{{ title }}
+{% endblock %}
+
+
+{% block content %}
+
+	<div class="container mt-3">
+	<div class="row">
+		<div class="col-2" id="logo">
+			<img src="{{ url_for('static', filename='images/sntss-logo.png') }}" alt="logo" width="80" height="100px" >
+		</div>
+		<div class="col" id="title">
+			<h5>SINDICATO NACIONAL DE TRABAJADORES DEL SEGURO SOCIAL SECC III JALISCO</h5>
+			<h6>REGISTRO CÉDULAS DE AFILIACIÓN</h6>
+		</div>
+			
+	</div>
+</div>
+
+	
+	
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col">
+				<form action="" method="GET">
+					<div class="form-group">
+						<label for="matricula">Matrícula</label>
+						<input type="text" name="matricula" class="form-control" id="" required>
+					</div>
+
+					<input type="submit" value="Validar" onsumbit="add_button()" class="btn btn-primary">
+				</form>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

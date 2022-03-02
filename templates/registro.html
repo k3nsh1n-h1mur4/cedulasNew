@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
-
+{% block title %}
+	{{ title }}
+{% endblock %}
 
 {% block content %}
 
@@ -17,61 +19,102 @@
 	</div>
 </div>
 
+{% with errors = get_flashed_messages(category_filter=["error"]) %}
+{% if errors %}
+<div class="alert-message block-message error">
+  <a class="close" href="#">×</a>
+  <ul>
+    {%- for msg in errors %}
+    <li>{{ msg }}</li>
+    {% endfor -%}
+  </ul>
+</div>
+{% endif %}
+{% endwith %}
+
 
 <div class="container mt-3">
 	<div class="row">
 		<div class="col">
-			<form action="" method="POST" class="form">
+			<form action="" method="POST" class="form" id="formulario" onsubmit="return validateFields()">
 
 				<label for="matricula">Matrícula</label>
-				<input type="text" name="matricula" class="form-control">
+				<input type="text" name="matricula" class="form-control" required id="mat">
+	
 
 				<label for="nombre">Nombre</label>
-				<input type="text" name="nombre" class="form-control">
+				<input type="text" name="nombre" class="form-control" required>
 
 				<label for="sexo">Sexo</label>
-				<input type="text" name="sexo" class="form-control">
+				<input type="text" name="sexo" class="form-control" required>
 
 				<label for="fnac">Fecha de Nacimiento</label>
-				<input type="date" name="fnac" class="form-control">
+				<input type="date" name="fnac" class="form-control" required>
 
 				<label for="correo">Correo</label>
-				<input type="text" name="correo" class="form-control">
+				<input type="text" name="correo" class="form-control" required>
 
 				<label for="telefono">Teléfono</label>
-				<input type="text" name="telefono" class="form-control">
+				<input type="text" name="telefono" class="form-control" required>
 
 				<label for="nss">Número de Seguro Social</label>
-				<input type="text" name="nss" class="form-control">
+				<input type="text" name="nss" class="form-control" required>
 
 				<label for="rfc">RFC</label>
-				<input type="text" name="rfc" class="form-control">
+				<input type="text" name="rfc" class="form-control" required>
 
 				<label for="curp">CURP</label>
-				<input type="text" name="curp" class="form-control">
+				<input type="text" name="curp" class="form-control" required>
 
 				<label for="categoria">Categoría</label>
-				<input type="text" name="categoria" class="form-control">
+				<select name="categoria" class="form-control">
+					{% for i in cat %}
+						<option value="{{ i.categoria }}">{{ i.categoria }}</option>
+					{% endfor %}
+				</select>
+				<!-- <input type="text" name="categoria" class="form-control"> -->
 
 				<label for="turno">Turno Laboral</label>
-				<input type="text" name="turno" class="form-control">
+				<select name="turno" class="form-control">
+					{% for i in turno %}
+						<option value="{{ i.turno }}">{{ i.turno }}</option>
+					{% endfor %}
+				</select>
+				<!-- <input type="text" name="turno" class="form-control"> -->
 
 				<label for="tcontr">Tipo de Contratación</label>
-				<input type="text" name="tcontr" class="form-control">
+				<select name="tcontr" class="form-control">
+					{% for i in cont%}
+						<option value="{{ i.contratacion }}">{{ i.contratacion }}</option>
+					{% endfor %}
+				</select>
+				<!-- <input type="text" name="tcontr" class="form-control"> -->
 
 				<label for="fingr">Fecha de Ingreso al IMSS</label>
-				<input type="date" name="fingr" class="form-control">
+				<input type="date" name="fingr" class="form-control" required>
 
 				<label for="uadscripcion">Unidad de Adscripción</label>
-				<input type="text" name="uadscripcion" class="form-control">
+				<select name="uadscripcion" class="form-control">
+					{% for i in adscripciones %}
+						<option value="{{ i.adscripcion }}">{{ i.adscripcion }}</option>
+					{% endfor %}	
+				</select>
+				
 
 
-				<input type="submit" value="Registrar" class="btn btn-primary" id="button">		
+				<p><input type="submit" value="Registrar" class="btn btn-primary form-control" id="button" onclick="getValuesMatricula();"></p>		
 			</form>
 		</div>
 	</div>
 	
 </div>
+
+<script src="{{ url_for('static', filename='main.js') }}">
+	
+	function getValuesMatricula(){
+    let mat = document.getElementById('mat').value;
+    alert(mat);
+</script>
 
 
 {% endblock %}

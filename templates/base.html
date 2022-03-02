@@ -1,31 +1,46 @@
 <!doctype html>
 <title>{% block title %}{% endblock %}</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 
 
 <section class="content">
   <header>
     {% block header %}{% endblock %}
+
+
   </header>
-  {% for message in get_flashed_messages() %}
-  <div class="flash">{{ message }}</div>
-  {% endfor %}
-  {% block content %}{% endblock %}
+  
+  {% block content %}
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          
+            {% with messages = get_flashed_messages(with_categories = true) %}
+              {% if messages %}
+                <ul class="flashes">
+                {% for category, message in messages %}
+                  <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+            {% block body %}{% endblock %}
+        </div>
+      </div>
+    </div>
 
-
-  <script>
-	  function saluda(){
-		
-		alert("hola mundo");
-	  }
-
-
-	  var btn = document.getElementById("button");
-	  btn.addEventListener('click', saluda());
-  </script>
-
+  {% endblock %}
 
 </section>
+
+<script type="text/javascript" scr="{{ url_for('static', filename='main.js') }} ">
+  
+  
+  
+
+</script>
 
 
